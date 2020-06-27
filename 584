@@ -1,0 +1,10 @@
+MySQL uses three-valued logic -- TRUE, FALSE and UNKNOWN. Anything compared to NULL evaluates to the third value: UNKNOWN. 没有join的时候需要单独列出来null
+select name
+from customer 
+where referee_id!=2
+or referee_id is null
+
+一开始错误写法，没有包括null
+select name
+from customer 
+where referee_id！=2
