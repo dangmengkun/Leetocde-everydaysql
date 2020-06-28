@@ -1,0 +1,12 @@
+we should use union all instead of union because union all will keep all the records even the 'duplicated' one.
+select ids as id, num_friends as num
+from
+(select ids,count(*) as num_friends
+from(
+select requester_id as ids from request_accepted
+union all
+select accepter_id from request_accepted
+    ) as tb1
+    group by ids) tb2
+    order by num desc
+    limit 1
